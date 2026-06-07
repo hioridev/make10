@@ -1,4 +1,11 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
+  const [answer, setAnswer] = useState("");
+  const [message, setMessage] = useState("");
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="text-4xl font-bold">Make 10 App</h1>
@@ -11,8 +18,18 @@ export default function Home() {
         <span>4</span>
       </div>
 
-      <input placeholder="Enter your expression here" className="mt-4 p-2 border rounded" />
-      <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Check</button>
+      <input 
+        type="text"
+        value={answer}
+        onChange={(e) => setAnswer(e.target.value)}
+        placeholder="Enter your expression here" 
+        className="mt-4 p-2 border rounded" 
+      />
+
+      <p className="mt-4 text-lg">{answer}</p>
+
+      <button onClick={() => setMessage(`You entered: ${answer}`)} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Check</button>
+      <p className="mt-4 text-lg">{message}</p>
     </main>
   );
 }
